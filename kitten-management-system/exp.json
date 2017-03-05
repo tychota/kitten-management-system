@@ -1,16 +1,16 @@
 {
   "name": "kitten-management-system",
-  "description": "An empty new project",
-  "slug": "kitten-management-system",
+  "description": "The magnificent Kitten Management System",
+  "slug": "kms",
   "privacy": "public",
   "sdkVersion": "14.0.0",
   "version": "1.0.0",
   "orientation": "portrait",
   "primaryColor": "#cccccc",
-  "icon": "https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png",
+  "icon": "http://www.icons101.com/icons/27/Animal_by_AdorableToon/128/kitten.png",
   "loading": {
-    "icon": "https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png",
-    "hideExponentText": false
+    "icon": "http://www.icons101.com/icons/27/Animal_by_AdorableToon/128/kitten.png",
+    "hideExponentText": true
   },
   "packagerOpts": {
     "assetExts": ["ttf", "mp4"]

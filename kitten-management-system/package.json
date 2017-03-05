@@ -2,7 +2,7 @@
   "name": "kitten-management-system",
   "version": "0.0.0",
   "description": "Hello Exponent!",
-  "author": null,
+  "author": "Tycho Tatitscheff",
   "private": true,
   "main": "main.js",
   "dependencies": {

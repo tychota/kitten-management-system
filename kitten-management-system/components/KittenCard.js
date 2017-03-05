@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Text, Image, View, Dimensions } from 'react-native';
+import { Text, Image, View, Dimensions, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@exponent/vector-icons';
+
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 class KittenCard extends Component {
   state = {
@@ -38,6 +42,29 @@ class KittenCard extends Component {
     this.updateImageSize();
   }
 
+  like = async () => {
+    this.props.mutate({
+      variables: { 
+        kittenId: this.props.kitten.id, 
+        userId: this.props.userId 
+      },
+       refetchQueries: [{
+        query: gql`query updateCache {
+          user {
+            id
+            email
+            likes {
+              kitten {
+                id
+              }
+            }
+          }
+        }`,
+        variables: { repoFullName: 'apollostack/apollo-client' },
+      }],
+    })
+  }
+
   render() {
     if (!this.props.kitten.profilePicture) return null;
     return (
@@ -62,9 +89,42 @@ class KittenCard extends Component {
             {this.props.kitten.name}
           </Text>
         </View>
+        {this.props.userId
+        && <TouchableOpacity
+          onPress={this.like}
+        >
+          <View style={{
+            position: 'absolute',
+            bottom: 5,
+            right: 5, 
+            height: 45, 
+            width: 45, 
+            borderRadius: 45,
+            borderWidth: 1,
+            backgroundColor: this.props.liked ? 'red' : 'white',
+            borderColor: this.props.liked ? 'white': 'red',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+            <Ionicons 
+              name={this.props.liked ? "ios-heart" : "ios-heart-outline"} 
+              size={25}
+              color={this.props.liked ? 'white': 'red'}
+              style={{ marginTop: 4 }}
+            />
+          </View>
+        </TouchableOpacity>}
       </View>
     )
   }
 }
 
-export default KittenCard;
+const like = gql`
+  mutation ($kittenId: ID!, $userId: ID!) {
+    createLike(kittenId: $kittenId, userId: $userId) {
+      createdAt
+    }
+  }
+`;
+
+export default graphql(like)(KittenCard);
