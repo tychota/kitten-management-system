@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { ApolloProvider } from 'react-apollo';
 

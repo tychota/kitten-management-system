@@ -32,6 +32,7 @@ class LoginScreen extends Component {
           password: this.state.password, 
         } 
       });
+      console.log(data)
       await AsyncStorage.setItem('token', data.signinUser.token);
       this.props.navigation.navigate('Home');
     } catch(e) {

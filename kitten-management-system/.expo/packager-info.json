@@ -1,0 +1,10 @@
+{
+  "exponentServerPort": null,
+  "packagerPort": 19001,
+  "packagerPid": 47943,
+  "exponentServerNgrokUrl": null,
+  "packagerNgrokUrl": "https://packager.bw-5iy.tychota.kitten-management-system.exp.direct",
+  "ngrokPid": 47966,
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://bw-5iy.tychota.kitten-management-system.exp.direct"
+}

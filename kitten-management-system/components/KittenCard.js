@@ -36,6 +36,7 @@ class KittenCard extends Component {
 
   componentWillMount() {
     this.updateImageSize();
+    Image.prefetch(this.props.kitten.profilePicture.url);
   }
 
   componentWillReceiveProps() {
@@ -78,25 +79,27 @@ class KittenCard extends Component {
           position: 'absolute', 
           width: this.state.imageStyle.width, 
           bottom: 0, 
-          backgroundColor: 'rgba(0, 0, 0, 0.4)'
+          backgroundColor: 'rgba(0, 0, 0, 0.6)'
         }}>
           <Text style={{ 
             color: 'white', 
             fontSize: 16, 
-            paddingVertical: 5, 
+            paddingVertical: 7, 
             textAlign: 'center'
           }}>
             {this.props.kitten.name}
           </Text>
         </View>
-        {this.props.userId
-        && <TouchableOpacity
-          onPress={this.like}
-        >
-          <View style={{
-            position: 'absolute',
-            bottom: 5,
-            right: 5, 
+        <TouchableOpacity
+            onPress={this.like}
+            style={{
+              position: 'absolute',
+              right: 5,
+              bottom: 5,
+              zIndex: 10
+            }}
+          >
+          <View style={{ 
             height: 45, 
             width: 45, 
             borderRadius: 45,
@@ -104,7 +107,7 @@ class KittenCard extends Component {
             backgroundColor: this.props.liked ? 'red' : 'white',
             borderColor: this.props.liked ? 'white': 'red',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
           }}>
             <Ionicons 
               name={this.props.liked ? "ios-heart" : "ios-heart-outline"} 
@@ -113,7 +116,7 @@ class KittenCard extends Component {
               style={{ marginTop: 4 }}
             />
           </View>
-        </TouchableOpacity>}
+        </TouchableOpacity>
       </View>
     )
   }
